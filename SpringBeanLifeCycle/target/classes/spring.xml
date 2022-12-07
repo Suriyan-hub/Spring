@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+    http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-4.0.xsd" >
+   <!--  Way to activate Life Cycle -->
+	  <context:annotation-config></context:annotation-config>
+   
+   <!-- XML Configuration for init() and destroy() instead of @postConstruct and @PreDestroy -->
+	<bean id="userDAO" class="com.springdemo.SpringBeanLifeCycle.UserDAO" init-method="init" destroy-method="destroy">
+	<property name="driver" value="com.mysql.cj.jdbc.Driver"></property>
+	<property name="url" value="jdbc:mysql://127.0.0.1:3306/springbean"></property>
+	<property name="username" value="root"></property>
+	<property name="password" value="root"></property>
+	</bean> 
+	<!-- Another way to activate bean life cycle -->
+	<!-- <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean> -->
+</beans>
